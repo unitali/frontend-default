@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import Input from './Input';
 import './styles.css';
@@ -26,7 +26,7 @@ const modifiedMessage = (message: string) => {
     })
 };
 
-const RegistrationForm: React.FC = () => {
+const Register: React.FC = () => {
     const [formData, setFormData] = useState({
         name: "",
         username: "",
@@ -34,8 +34,8 @@ const RegistrationForm: React.FC = () => {
         confirmPassword: ""
     });
 
-    const [errors, setErrors] = useState<{ [key: string]: string }>({});
-    const [buttonClicked, setButtonClicked] = useState(false);
+    const [isFormValid, setIsFormValid] = useState(false);
+    const [isLoading, setLoading] = useState(false);
 
     const handleInputChange = (
         event: React.ChangeEvent<HTMLInputElement>
@@ -43,37 +43,21 @@ const RegistrationForm: React.FC = () => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
 
-        // Limpar mensagem de erro quando o campo é preenchido
-        if (errors[name]) {
-            setErrors({ ...errors, [name]: "" });
-        }
     };
+
+    useEffect(() => {
+        // Verifica se todos os campos obrigatórios estão preenchidos
+        const requiredFields: (keyof FormData)[] = ['name', 'username', 'password', 'confirmPassword'];
+        const isFormValid = requiredFields.every((fieldName) => formData[fieldName].trim() !== '');
+        setIsFormValid(isFormValid);
+    }, [formData]);
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         const apiUrl = `${process.env.REACT_APP_API_URL}/register`;
 
-        // Objeto para rastrear erros
-        const newErrors: { [key in keyof FormData]?: string } = {};
-
-        // Lista de campos obrigatórios
-        const requiredFields: (keyof FormData)[] = ['name', 'username', 'password', 'confirmPassword'];
-
-        // Verifica campos obrigatórios vazios
-        requiredFields.forEach((fieldName) => {
-            if (!formData[fieldName]) {
-                const errorMessage = `O campo '${labels[fieldName]}' é obrigatório.`;
-                newErrors[fieldName] = errorMessage;
-            }
-        });
-
-        // Se houver erros, define o estado dos erros e retorna
-        if (Object.keys(newErrors).length > 0) {
-            setErrors(newErrors);
-            return;
-        }
-
         if (apiUrl) {
+            setLoading(true);
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
@@ -83,6 +67,7 @@ const RegistrationForm: React.FC = () => {
             });
 
             const responseData = await response.json();
+            setLoading(false);
 
             if (response.ok) {
                 console.log(responseData);
@@ -104,21 +89,24 @@ const RegistrationForm: React.FC = () => {
 
     return (
         <div className="registration-container">
-            <h2>{labels.title}</h2>
-            <form onSubmit={handleSubmit} style={{ maxWidth: "500px", margin: "0 auto" }}>
-                <Input label={labels.name} name="name" onChange={handleInputChange} type="text" value={formData.name} required error={errors.name} buttonClicked={buttonClicked} />
-                <Input label={labels.username} name="username" onChange={handleInputChange} type="email" value={formData.username} required error={errors.username} buttonClicked={buttonClicked} />
-                <Input label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required error={errors.password} buttonClicked={buttonClicked} />
-                <Input label={labels.confirmPassword} name="confirmPassword" onChange={handleInputChange} type="password" value={formData.confirmPassword} required error={errors.confirmPassword} buttonClicked={buttonClicked} />
-                <div>
-                    <button className="btn btn-primary" type="submit" onClick={() => setButtonClicked(true)}>
-                        {labels.btnSubmit}
+            <h2 className="text-center p-5">{labels.title}</h2>
+            <form onSubmit={handleSubmit} >
+                <Input label={labels.name} name="name" onChange={handleInputChange} type="text" value={formData.name} required disabled={isLoading} />
+                <Input label={labels.username} name="username" onChange={handleInputChange} type="email" value={formData.username} required disabled={isLoading} />
+                <Input label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} />
+                <Input label={labels.confirmPassword} name="confirmPassword" onChange={handleInputChange} type="password" value={formData.confirmPassword} required disabled={isLoading} />
+                <div className='text-center '>
+                    <button className="btn btn-primary mt-5 px-5 py-2" type="submit" disabled={!isFormValid}>
+                        {isLoading ? (
+                            <div className="spinner-grow spinner-grow-sm" role="status">
+                                <span className="visually-hidden"></span>
+                            </div>
+                        ) : (labels.btnSubmit)}
                     </button>
-
                 </div>
             </form>
         </div>
     );
 };
 
-export default RegistrationForm;
+export default Register;

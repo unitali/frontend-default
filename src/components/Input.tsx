@@ -11,28 +11,27 @@ interface InputProps {
     required?: boolean;
     error?: string;
     buttonClicked?: boolean;
+    disabled?: boolean;
 }
-const Input: React.FC<InputProps> = ({ type, value, onChange, label, name, required, error, buttonClicked, ...props }) => {
-    const isEmpty = required && value.trim() === '';
-
-    const showError = error && error !== '' ? error : null;
+const Input: React.FC<InputProps> = ({ ...props }) => {
+    const showError = props.error && props.error !== '' ? props.error : null;
 
     return (
-        <div className={`form-floating mb-3 ${buttonClicked && showError ? 'has-error' : ''}`}>
+        <div className={`form-floating m-3  ${props.buttonClicked && showError ? 'has-error' : ''}`}>
             <input
-                className={`form-control ${buttonClicked && showError ? 'error-border' : ''}`}
-                type={type}
-                id={label.toLowerCase()}
-                name={name}
-                value={value}
-                onChange={onChange}
+                className={`form-control ${props.buttonClicked && showError ? 'error-border' : ''}`}
+                type={props.type}
+                id={props.label.toLowerCase()}
+                name={props.name}
+                value={props.value}
+                onChange={props.onChange}
                 placeholder=""
-                {...props}
+                disabled={props.disabled}
             />
-            <label htmlFor={label.toLowerCase()}>
-                {label} {required && <span style={{ color: 'red' }}>*</span>}
+            <label htmlFor={props.label.toLowerCase()}>
+                {props.label} {props.required && <span style={{ color: 'red' }}>*</span>}
             </label>
-            {error && <div className="error-message">{error}</div>}
+            {props.error && <div className="error-message">{props.error}</div>}
         </div>
     );
 };

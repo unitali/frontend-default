@@ -1,10 +1,16 @@
 .registration-container {
     display: flex;
     flex-direction: column;
-    max-width: 600px;
+    max-width: 500px;
     justify-content: center;
     min-height: 100vh;
     margin: 0 auto;
+    background-color: #F8F8FF;
+}
+
+.btn-primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
 .error-message {
