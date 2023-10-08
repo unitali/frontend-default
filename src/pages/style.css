@@ -8,17 +8,4 @@
     background-color: #F8F8FF;
 }
 
-.btn-primary:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-}
 
-.error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 4px;
-}
-
-.error-border {
-    border-color: red !important;
-}

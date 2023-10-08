@@ -1,7 +1,9 @@
-import React from 'react';
-import Register from './components/Register'
+// App.tsx
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import AppRoutes from './Routes';
 
 function App() {
   return (
@@ -18,9 +20,9 @@ function App() {
         pauseOnHover
         theme="colored"
       />
-      <header className="App-header">
-        <Register />
-      </header>
+      <Router>
+        <AppRoutes />
+      </Router>
     </div>
   );
 }

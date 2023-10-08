@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import Input from './Input';
-import './styles.css';
+import Input from '../components/input';
+import Button from '../components/button';
+import './style.css';
 
 const labels = {
     title: "Registrar usuário",
@@ -96,13 +97,7 @@ const Register: React.FC = () => {
                 <Input label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} />
                 <Input label={labels.confirmPassword} name="confirmPassword" onChange={handleInputChange} type="password" value={formData.confirmPassword} required disabled={isLoading} />
                 <div className='text-center '>
-                    <button className="btn btn-primary mt-5 px-5 py-2" type="submit" disabled={!isFormValid}>
-                        {isLoading ? (
-                            <div className="spinner-grow spinner-grow-sm" role="status">
-                                <span className="visually-hidden"></span>
-                            </div>
-                        ) : (labels.btnSubmit)}
-                    </button>
+                    <Button label={labels.btnSubmit} loading={isLoading} disabled={!isFormValid} />
                 </div>
             </form>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import './styles.css';
+import './style.css';
 
 
 interface InputProps {
@@ -17,7 +17,8 @@ const Input: React.FC<InputProps> = ({ ...props }) => {
     const showError = props.error && props.error !== '' ? props.error : null;
 
     return (
-        <div className={`form-floating m-3  ${props.buttonClicked && showError ? 'has-error' : ''}`}>
+        <div
+            className={`form-floating m-3 ${props.buttonClicked && showError ? 'has-error' : ''}`} >
             <input
                 className={`form-control ${props.buttonClicked && showError ? 'error-border' : ''}`}
                 type={props.type}
@@ -29,9 +30,14 @@ const Input: React.FC<InputProps> = ({ ...props }) => {
                 disabled={props.disabled}
             />
             <label htmlFor={props.label.toLowerCase()}>
-                {props.label} {props.required && <span style={{ color: 'red' }}>*</span>}
+                {props.label}
+                {props.required &&
+                    <span
+                        style={{ color: 'red' }} >*</span>}
             </label>
-            {props.error && <div className="error-message">{props.error}</div>}
+            {props.error &&
+                <div
+                    className="error-message" >{props.error}</div>}
         </div>
     );
 };
