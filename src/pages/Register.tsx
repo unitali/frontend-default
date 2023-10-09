@@ -98,8 +98,8 @@ const Register: React.FC = () => {
                 <Input label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} showPassword />
                 <Input label={labels.confirmPassword} name="confirmPassword" onChange={handleInputChange} type="password" value={formData.confirmPassword} required disabled={isLoading} showPassword />
                 <div className='text-center '>
-                    <Button label={labels.btnSubmit} loading={isLoading} disabled={!isFormValid} />
-                    <Button className="mx-5" label={labels.btnBack} loading={isLoading} toPath='/' />
+                    <Button className="btn-primary"label={labels.btnSubmit} loading={isLoading} disabled={!isFormValid} />
+                    <Button className="btn-outline-primary" label={labels.btnBack} loading={isLoading} toPath='/' />
                 </div>
             </form>
         </div>
