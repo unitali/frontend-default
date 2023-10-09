@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({ ...props }) => {
 
     const button = (
         <button
-            className={`btn btn-primary mt-5 px-5 py-2 ${props.className}`}
+            className={`btn me-2 ${props.className}`}
             type="submit"
             disabled={props.disabled || props.loading}
         >
@@ -34,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({ ...props }) => {
             </Link>
         ) : (
             <button
-                className={`btn btn-primary mt-5 px-5 py-2`}
+                className={`btn me-2 ${props.className}`}
                 type="submit"
                 disabled={props.disabled || props.loading}
             >

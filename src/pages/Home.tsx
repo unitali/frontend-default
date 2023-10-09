@@ -1,11 +1,12 @@
 import Button from "../components/button"
+import NavbarPublic from "../components/navbarPublic";
+
 
 const Home = () => {
     return (
         <div>
-            <h1>PÁGINA HOME ...</h1>
-            <Button className="mx-5" label="LOGIN" toPath="/login" />
-            <Button label="CADASTRO" toPath="/register" />
+            <NavbarPublic />
+
         </div>
     )
 }
