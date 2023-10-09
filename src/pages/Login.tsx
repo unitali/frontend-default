@@ -87,11 +87,11 @@ const Login: React.FC = () => {
     return (
         <div className="container text-center p-5 bg-light" style={{maxWidth: 500}}>
             <img className="w-50 align-self-center my-2" src={logotipo} alt='logotipo'/>
-            <h2>{labels.title}</h2>
+            <h2 className="fs-3 p-4">{labels.title}</h2>
             <form onSubmit={handleSubmit} >
                 <Input label={labels.username} name="username" onChange={handleInputChange} type="email" value={formData.username} required disabled={isLoading} />
                 <Input label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} showPassword />
-                <div className='text-center '>
+                <div className="text-center pt-4">
                     <Button className={"btn-primary"} label={labels.btnSubmit} loading={isLoading} disabled={!isFormValid} />
                     <Button className={"btn-outline-primary"} label={labels.btnBack} loading={isLoading} toPath='/' />
                 </div>
