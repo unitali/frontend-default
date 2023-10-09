@@ -10,6 +10,7 @@ const labels = {
     username: "E-mail",
     password: "Senha",
     btnSubmit: "Entrar",
+    btnBack: "Voltar",
 }
 
 const modifiedMessage = (message: string) => {
@@ -91,6 +92,7 @@ const Login: React.FC = () => {
                 <Input label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} showPassword/>
                 <div className='text-center '>
                     <Button label={labels.btnSubmit} loading={isLoading} disabled={!isFormValid} />
+                    <Button className={"mx-5"} label={labels.btnBack} loading={isLoading}  toPath='/'/>
                 </div>
             </form>
         </div>

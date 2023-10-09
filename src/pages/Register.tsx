@@ -11,6 +11,7 @@ const labels = {
     password: "Senha",
     confirmPassword: "Confirmar senha",
     btnSubmit: "Registrar",
+    btnBack: "Voltar",
 }
 
 type FormData = {
@@ -94,10 +95,11 @@ const Register: React.FC = () => {
             <form onSubmit={handleSubmit} >
                 <Input label={labels.name} name="name" onChange={handleInputChange} type="text" value={formData.name} required disabled={isLoading} />
                 <Input label={labels.username} name="username" onChange={handleInputChange} type="email" value={formData.username} required disabled={isLoading} />
-                <Input label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} showPassword/>
+                <Input label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} showPassword />
                 <Input label={labels.confirmPassword} name="confirmPassword" onChange={handleInputChange} type="password" value={formData.confirmPassword} required disabled={isLoading} showPassword />
                 <div className='text-center '>
                     <Button label={labels.btnSubmit} loading={isLoading} disabled={!isFormValid} />
+                    <Button className="mx-5" label={labels.btnBack} loading={isLoading} toPath='/' />
                 </div>
             </form>
         </div>

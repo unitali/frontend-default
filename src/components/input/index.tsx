@@ -20,7 +20,7 @@ const Input: React.FC<InputProps> = ({ ...props }) => {
     };
 
     return (
-        <div className="input-group mb-3">
+        <div className="input-group p-3">
             <div className="form-floating">
                 <input
                     className="form-control"
@@ -32,9 +32,9 @@ const Input: React.FC<InputProps> = ({ ...props }) => {
                     placeholder=""
                     disabled={props.disabled}
                 />
-                <label className="text-muted" htmlFor={props.label.toLowerCase()}>
+                <label className="text-muted text-primary" htmlFor={props.label.toLowerCase()}>
                     {props.label}
-                    {props.required && <span style={{ color: 'red' }}> *</span>}
+                    {props.required && <span> *</span>}
                 </label>
             </div>
             {props.showPassword && (
