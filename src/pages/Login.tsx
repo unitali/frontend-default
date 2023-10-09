@@ -88,7 +88,7 @@ const Login: React.FC = () => {
             <h2 className="text-center p-5">{labels.title}</h2>
             <form onSubmit={handleSubmit} >
                 <Input label={labels.username} name="username" onChange={handleInputChange} type="email" value={formData.username} required disabled={isLoading} />
-                <Input label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} />
+                <Input label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} showPassword/>
                 <div className='text-center '>
                     <Button label={labels.btnSubmit} loading={isLoading} disabled={!isFormValid} />
                 </div>
