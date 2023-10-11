@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import NavbarAdmin from '../components/navbarAdmin';
 
 
 function Admin() {
@@ -27,7 +28,7 @@ function Admin() {
 
     return (
         <div>
-            <h1>ADMIN PAGE</h1>
+            <NavbarAdmin />
         </div>
     );
 }
