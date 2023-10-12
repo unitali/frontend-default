@@ -91,7 +91,7 @@ const Login: React.FC = () => {
                 <Input id="login-username" label={labels.username} name="username" onChange={handleInputChange} type="email" value={formData.username} required disabled={isLoading} />
                 <Input id="login-password" label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} showPassword />
                 <div className="text-center pt-4">
-                    <Button id="btn-submit" className={"btn-primary"} label={labels.btnSubmit} loading={isLoading} disabled={!isFormValid} toPath='/admin' />
+                    <Button id="btn-submit" className={"btn-primary"} label={labels.btnSubmit} loading={isLoading} disabled={!isFormValid} />
                     <Button id="btn-back" className={"btn-outline-primary"} label={labels.btnBack} loading={isLoading} toPath='/' />
                 </div>
             </form>
