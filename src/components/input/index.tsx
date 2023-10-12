@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './style.css';
 
 interface InputProps {
+    id: string;
     type: 'text' | 'password' | 'email';
     value: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -25,7 +26,7 @@ const Input: React.FC<InputProps> = ({ ...props }) => {
                 <input
                     className="form-control"
                     type={showPassword ? 'text' : props.type}
-                    id={props.label.toLowerCase()}
+                    id={props.id}
                     name={props.name}
                     value={props.value}
                     onChange={props.onChange}

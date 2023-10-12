@@ -91,17 +91,17 @@ const Register: React.FC = () => {
     };
 
     return (
-        <div className="container text-center p-5 bg-light" style={{ maxWidth: 500 }}>
-            <img className="w-50 align-self-center my-2" src={logotipo} alt='logotipo' />
-            <h2 className="fs-3 p-4">{labels.title}</h2>
-            <form onSubmit={handleSubmit} >
-                <Input label={labels.name} name="name" onChange={handleInputChange} type="text" value={formData.name} required disabled={isLoading} />
-                <Input label={labels.username} name="username" onChange={handleInputChange} type="email" value={formData.username} required disabled={isLoading} />
-                <Input label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} showPassword />
-                <Input label={labels.confirmPassword} name="confirmPassword" onChange={handleInputChange} type="password" value={formData.confirmPassword} required disabled={isLoading} showPassword />
+        <div id="register-container" className="container text-center p-5 bg-light" style={{ maxWidth: 500 }}>
+            <img id="img-logo" className="w-50 align-self-center my-2" src={logotipo} alt='logotipo' />
+            <h2 id="tilte" className="fs-3 p-4">{labels.title}</h2>
+            <form id="form" onSubmit={handleSubmit} >
+                <Input id="register-name" label={labels.name} name="name" onChange={handleInputChange} type="text" value={formData.name} required disabled={isLoading} />
+                <Input id="register-username" label={labels.username} name="username" onChange={handleInputChange} type="email" value={formData.username} required disabled={isLoading} />
+                <Input id="register-password" label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} showPassword />
+                <Input id="register-confirm-password" label={labels.confirmPassword} name="confirmPassword" onChange={handleInputChange} type="password" value={formData.confirmPassword} required disabled={isLoading} showPassword />
                 <div className="text-center p-4">
-                    <Button className="btn-primary" label={labels.btnSubmit} loading={isLoading} disabled={!isFormValid} />
-                    <Button className="btn-outline-primary" label={labels.btnBack} loading={isLoading} toPath='/' />
+                    <Button id="btn-submit" className="btn-primary" label={labels.btnSubmit} loading={isLoading} disabled={!isFormValid} />
+                    <Button id="btn-back" className="btn-outline-primary" label={labels.btnBack} loading={isLoading} toPath='/' />
                 </div>
             </form>
         </div>
