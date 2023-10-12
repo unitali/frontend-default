@@ -93,7 +93,7 @@ const Register: React.FC = () => {
     return (
         <div id="register-container" className="container text-center p-5 bg-light" style={{ maxWidth: 500 }}>
             <img id="img-logo" className="w-50 align-self-center my-2" src={logotipo} alt='logotipo' />
-            <h2 id="tilte" className="fs-3 p-4">{labels.title}</h2>
+            <h2 id="title" className="fs-3 p-4">{labels.title}</h2>
             <form id="form" onSubmit={handleSubmit} >
                 <Input id="register-name" label={labels.name} name="name" onChange={handleInputChange} type="text" value={formData.name} required disabled={isLoading} />
                 <Input id="register-username" label={labels.username} name="username" onChange={handleInputChange} type="email" value={formData.username} required disabled={isLoading} />
