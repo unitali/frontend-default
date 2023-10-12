@@ -36,6 +36,7 @@ const Button: React.FC<ButtonProps> = ({ ...props }) => {
             </Link>
         ) : (
             <button
+                id={props.id}
                 className={`btn me-2 ${props.className}`}
                 type="submit"
                 disabled={props.disabled || props.loading}
