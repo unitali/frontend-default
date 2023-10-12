@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 interface ButtonProps {
+    id: string;
     label: string;
     loading?: boolean;
     disabled?: boolean;
@@ -19,6 +20,7 @@ const Button: React.FC<ButtonProps> = ({ ...props }) => {
 
     const button = (
         <button
+            id={props.id}
             className={`btn me-2 ${props.className}`}
             type="submit"
             disabled={props.disabled || props.loading}
