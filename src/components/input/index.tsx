@@ -5,7 +5,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     required?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({ label, name, type, required, ...props }) => {
+export function Input({ label, name, type, required, ...props }: InputProps) {
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
@@ -43,5 +43,3 @@ const Input: React.FC<InputProps> = ({ label, name, type, required, ...props }) 
         </div>
     );
 };
-
-export default Input;

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import Input from '../components/Input';
+import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 import logotipo from "../assets/img/logotipo.png"
+import { routesApi, routesWeb } from '../services/routes';
 
 
 const labels = {
@@ -29,7 +30,7 @@ const modifiedMessage = (message: string) => {
     })
 };
 
-const Register: React.FC = () => {
+export function SignUp() {
     const [formData, setFormData] = useState({
         name: "",
         username: "",
@@ -57,7 +58,7 @@ const Register: React.FC = () => {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        const apiUrl = `${process.env.REACT_APP_API_URL}/register`;
+        const apiUrl = routesApi.signUp;
 
         if (apiUrl) {
             setLoading(true);
@@ -91,21 +92,70 @@ const Register: React.FC = () => {
     };
 
     return (
-        <div id="register-container" className="container text-center p-5 bg-light" style={{ maxWidth: 500 }}>
-            <img id="img-logo" className="w-50 align-self-center my-2" src={logotipo} alt='logotipo' />
-            <h2 id="tilte" className="fs-3 p-4">{labels.title}</h2>
-            <form id="form" onSubmit={handleSubmit} >
-                <Input id="register-name" label={labels.name} name="name" onChange={handleInputChange} type="text" value={formData.name} required disabled={isLoading} />
-                <Input id="register-username" label={labels.username} name="username" onChange={handleInputChange} type="email" value={formData.username} required disabled={isLoading} />
-                <Input id="register-password" label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} />
-                <Input id="register-confirm-password" label={labels.confirmPassword} name="confirmPassword" onChange={handleInputChange} type="password" value={formData.confirmPassword} required disabled={isLoading} />
+        <div className="container text-center p-5 bg-light"
+            id="register-container"
+            style={{ maxWidth: 500 }}>
+            <img className="w-50 align-self-center my-2"
+                id="img-logo"
+                src={logotipo}
+                alt='logotipo' />
+            <h2 className="fs-3 p-4"
+                id="tilte" >
+                {labels.title}
+            </h2>
+            <form
+                onSubmit={handleSubmit}
+                id="form" >
+                <Input
+                    id="register-name"
+                    label={labels.name}
+                    name="name"
+                    onChange={handleInputChange}
+                    type="text" value={formData.name}
+                    required
+                    disabled={isLoading} />
+                <Input
+                    id="register-username"
+                    label={labels.username}
+                    name="username"
+                    onChange={handleInputChange}
+                    type="email"
+                    value={formData.username}
+                    required
+                    disabled={isLoading} />
+                <Input
+                    id="register-password"
+                    label={labels.password}
+                    name="password"
+                    onChange={handleInputChange}
+                    type="password"
+                    value={formData.password}
+                    required
+                    disabled={isLoading} />
+                <Input
+                    id="register-confirm-password"
+                    label={labels.confirmPassword}
+                    name="confirmPassword"
+                    onChange={handleInputChange}
+                    type="password"
+                    value={formData.confirmPassword}
+                    required
+                    disabled={isLoading} />
                 <div className="text-center p-4">
-                    <Button id="btn-submit" className="btn-primary" loading={isLoading} disabled={!isFormValid} >{labels.btnSubmit}</Button>
-                    <Button id="btn-back" className="btn-outline-primary" loading={isLoading} toPath='/' >{labels.btnBack}</Button>
+                    <Button className="btn-primary"
+                        id="btn-submit"
+                        loading={isLoading}
+                        disabled={!isFormValid} >
+                        {labels.btnSubmit}
+                    </Button>
+                    <Button className="btn-outline-primary"
+                        id="btn-back"
+                        loading={isLoading}
+                        toPath={routesWeb.home} >
+                        {labels.btnBack}
+                    </Button>
                 </div>
             </form>
         </div>
     );
 };
-
-export default Register;

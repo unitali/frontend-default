@@ -1,6 +1,11 @@
-
+import { signOut } from "../../contexts/AuthContext"
 
 const NavbarAdmin = () => {
+
+    const handleSignOut = () => {
+        signOut();
+    }
+
     return (
         <header className="p-3 mb-3 border-bottom">
             <div className="container">
@@ -29,7 +34,7 @@ const NavbarAdmin = () => {
                             <li><a className="dropdown-item" href="#">Settings</a></li>
                             <li><a className="dropdown-item" href="#">Profile</a></li>
                             <li><hr className="dropdown-divider" /></li>
-                            <li><a className="dropdown-item" href="#">Sign out</a></li>
+                            <li><a className="dropdown-item" onClick={handleSignOut} style={{ cursor: "pointer" }}>Sign out</a></li>
                         </ul>
                     </div>
                 </div>
