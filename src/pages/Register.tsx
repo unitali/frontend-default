@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import Input from '../components/input';
-import Button from '../components/button';
+import Input from '../components/Input';
+import { Button } from '../components/Button';
 import logotipo from "../assets/img/logotipo.png"
 
 
@@ -97,11 +97,11 @@ const Register: React.FC = () => {
             <form id="form" onSubmit={handleSubmit} >
                 <Input id="register-name" label={labels.name} name="name" onChange={handleInputChange} type="text" value={formData.name} required disabled={isLoading} />
                 <Input id="register-username" label={labels.username} name="username" onChange={handleInputChange} type="email" value={formData.username} required disabled={isLoading} />
-                <Input id="register-password" label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} showPassword />
-                <Input id="register-confirm-password" label={labels.confirmPassword} name="confirmPassword" onChange={handleInputChange} type="password" value={formData.confirmPassword} required disabled={isLoading} showPassword />
+                <Input id="register-password" label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} />
+                <Input id="register-confirm-password" label={labels.confirmPassword} name="confirmPassword" onChange={handleInputChange} type="password" value={formData.confirmPassword} required disabled={isLoading} />
                 <div className="text-center p-4">
-                    <Button id="btn-submit" className="btn-primary" label={labels.btnSubmit} loading={isLoading} disabled={!isFormValid} />
-                    <Button id="btn-back" className="btn-outline-primary" label={labels.btnBack} loading={isLoading} toPath='/' />
+                    <Button id="btn-submit" className="btn-primary" loading={isLoading} disabled={!isFormValid} >{labels.btnSubmit}</Button>
+                    <Button id="btn-back" className="btn-outline-primary" loading={isLoading} toPath='/' >{labels.btnBack}</Button>
                 </div>
             </form>
         </div>

@@ -7,13 +7,20 @@ import Login from './pages/Login';
 import Admin from './pages/Admin';
 import Home from './pages/Home';
 
+export const routes = {
+  home: "/",
+  signIn: "/sign-in",
+  signUp: "/sign-up",
+  admin: "/admin",
+}
+
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/admin" element={<Admin />} />
+      <Route path={routes.home} element={<Home />} />
+      <Route path={routes.signUp} element={<Register />} />
+      <Route path={routes.signIn} element={<Login />} />
+      <Route path={routes.admin} element={<Admin />} />
     </Routes>
   );
 }

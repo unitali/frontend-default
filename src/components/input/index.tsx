@@ -1,19 +1,11 @@
-import React, { useState } from "react";
-import './style.css';
+import React, { InputHTMLAttributes, useState } from "react";
 
-interface InputProps {
-    id: string;
-    type: 'text' | 'password' | 'email';
-    value: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
-    name: string;
     required?: boolean;
-    disabled?: boolean;
-    showPassword?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({ ...props }) => {
+const Input: React.FC<InputProps> = ({ label, name, type, required, ...props }) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
@@ -25,20 +17,17 @@ const Input: React.FC<InputProps> = ({ ...props }) => {
             <div className="form-floating">
                 <input
                     className="form-control"
-                    type={showPassword ? 'text' : props.type}
-                    id={props.id}
-                    name={props.name}
-                    value={props.value}
-                    onChange={props.onChange}
+                    type={showPassword ? 'text' : type}
                     placeholder=""
-                    disabled={props.disabled}
+                    name={name}
+                    {...props}
                 />
-                <label className="text-muted text-primary" htmlFor={props.label.toLowerCase()}>
-                    {props.label}
-                    {props.required && <span> *</span>}
+                <label className="text-muted text-primary" htmlFor={name}>
+                    {label}
+                    {required && <span> *</span>}
                 </label>
             </div>
-            {props.showPassword && (
+            {type === "password" && (
                 <span
                     className="input-group-text"
                     onClick={togglePasswordVisibility}

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import Input from '../components/input';
-import Button from '../components/button';
+import Input from '../components/Input';
+import { Button } from '../components/Button';
 import logotipo from "../assets/img/logotipo.png"
+import { routes } from '../Routes';
+import { Link } from "react-router-dom";
 
 const labels = {
     title: "Login",
@@ -10,6 +12,8 @@ const labels = {
     password: "Senha",
     btnSubmit: "Entrar",
     btnBack: "Voltar",
+    linkCreateSignUp: "Faça aqui seu cadastro",
+    linkRecoverPassword: "Esqueceu sua senha?",
 }
 
 const modifiedMessage = (message: string) => {
@@ -84,15 +88,19 @@ const Login: React.FC = () => {
         }
     };
     return (
-        <div id="login-container" className="container text-center p-5 bg-light" style={{maxWidth: 500}}>
-            <img id="img-logo" className="w-50 align-self-center my-2" src={logotipo} alt='logotipo'/>
+        <div id="login-container" className="container text-center p-5 bg-light" style={{ maxWidth: 500 }}>
+            <img id="img-logo" className="w-50 align-self-center my-2" src={logotipo} alt='logotipo' />
             <h2 id="title" className="fs-3 p-4">{labels.title}</h2>
             <form id="form" onSubmit={handleSubmit} >
                 <Input id="login-username" label={labels.username} name="username" onChange={handleInputChange} type="email" value={formData.username} required disabled={isLoading} />
-                <Input id="login-password" label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} showPassword />
+                <Input id="login-password" label={labels.password} name="password" onChange={handleInputChange} type="password" value={formData.password} required disabled={isLoading} />
+                <div className="fw-light d-flex justify-content-around">
+                    <Link id="link-recover-password" className="link-opacity-75-hover link-offset-2 link-underline link-underline-opacity-0" to={routes.signUp}>{labels.linkRecoverPassword}</Link>
+                    <Link id="link-signup" className="link-opacity-75-hover link-offset-2 link-underline link-underline-opacity-0" to={routes.signUp}>{labels.linkCreateSignUp}</Link>
+                </div>
                 <div className="text-center pt-4">
-                    <Button id="btn-submit" className={"btn-primary"} label={labels.btnSubmit} loading={isLoading} disabled={!isFormValid} />
-                    <Button id="btn-back" className={"btn-outline-primary"} label={labels.btnBack} loading={isLoading} toPath='/' />
+                    <Button id="btn-submit" className={"btn-primary"} loading={isLoading} disabled={!isFormValid} > {labels.btnSubmit} </Button>
+                    <Button id="btn-back" className={"btn-outline-primary"} loading={isLoading} toPath={routes.home} > {labels.btnBack} </Button>
                 </div>
             </form>
         </div>
