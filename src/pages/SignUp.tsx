@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { Input } from '../components/Input';
-import { Button } from '../components/Button';
+import { Input } from '../components/input';
+import { Button } from '../components/button';
 import logotipo from "../assets/img/logotipo.png"
 import { routesApi, routesWeb } from '../services/routes';
 

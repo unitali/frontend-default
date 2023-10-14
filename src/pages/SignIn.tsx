@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Input } from '../components/Input';
-import { Button } from '../components/Button';
+import { Input } from '../components/input';
+import { Button } from '../components/button';
 import logotipo from "../assets/img/logotipo.png"
 import React, { useState, useEffect, FormEvent, useContext } from 'react';
 import { routesWeb } from '../services/routes';

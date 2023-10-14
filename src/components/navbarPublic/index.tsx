@@ -1,5 +1,5 @@
 import React from "react"
-import { Button } from "../Button"
+import { Button } from "../button"
 import { Link } from "react-router-dom";
 import logotipo from "../../assets/img/logotipo.png"
 import { routesWeb } from "../../services/routes";
