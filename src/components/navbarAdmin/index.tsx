@@ -1,9 +1,8 @@
-import { signOut } from "../../contexts/AuthContext"
 
 const NavbarAdmin = () => {
 
     const handleSignOut = () => {
-        signOut();
+        // signOut();
     }
 
     return (

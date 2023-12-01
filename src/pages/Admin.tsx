@@ -6,9 +6,9 @@ export default function Admin() {
 
 
     return (
-        <div>
+        <>
             <NavbarAdmin />
-        </div>
+        </>
     );
 }
 

@@ -3,7 +3,7 @@ import { Input } from '../components/input';
 import { Button } from '../components/button';
 import logotipo from "../assets/img/logotipo.png"
 import React, { useState, useEffect, FormEvent, useContext } from 'react';
-import { routesWeb } from '../services/routes';
+import { routeWeb } from '../services/pathRoutes';
 import { AuthContext } from '../contexts/AuthContext';
 
 const labels = {
@@ -89,12 +89,12 @@ export function SignIn() {
                 <div className="fw-light d-flex justify-content-around">
                     <Link className="link-opacity-75-hover link-offset-2 link-underline link-underline-opacity-0"
                         id="link-recover-password"
-                        to={routesWeb.signUp}>
+                        to={routeWeb.signUp}>
                         {labels.linkRecoverPassword}
                     </Link>
                     <Link className="link-opacity-75-hover link-offset-2 link-underline link-underline-opacity-0"
                         id="link-signup"
-                        to={routesWeb.signUp}>
+                        to={routeWeb.signUp}>
                         {labels.linkCreateSignUp}
                     </Link>
                 </div>
@@ -108,7 +108,7 @@ export function SignIn() {
                     <Button className={"btn-outline-primary"}
                         id="btn-back"
                         loading={isLoading}
-                        toPath={routesWeb.home} >
+                        toPath={routeWeb.home} >
                         {labels.btnBack}
                     </Button>
                 </div>

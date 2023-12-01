@@ -1,18 +1,19 @@
 
 import { Route, Routes } from 'react-router-dom';
-import { routesWeb } from "./services/routes"
+import { routeWeb } from "./services/pathRoutes"
 import { SignUp } from './pages/SignUp';
 import { SignIn } from './pages/SignIn';
 import Admin from './pages/Admin';
 import Home from './pages/Home';
+import { Private } from './routes/Private';
 
 function AppRoutes() {
   return (
     <Routes>
-      <Route path={routesWeb.home} element={<Home />} />
-      <Route path={routesWeb.signUp} element={<SignUp />} />
-      <Route path={routesWeb.signIn} element={<SignIn />} />
-      <Route path={routesWeb.admin} element={<Admin />} />
+      <Route path={routeWeb.home} element={<Home />} />
+      <Route path={routeWeb.signUp} element={<SignUp />} />
+      <Route path={routeWeb.signIn} element={<SignIn />} />
+      <Route path={routeWeb.admin} element={<Private><Admin /></Private>} />
     </Routes>
   );
 }
