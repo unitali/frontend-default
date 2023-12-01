@@ -2,7 +2,7 @@ import { api } from "../services/api"
 import { destroyCookie, setCookie } from "nookies"
 import { properties } from "../configs/properties"
 import { createContext, ReactNode, useState } from "react";
-import { routesApi, routesWeb } from "../services/routes";
+import { routeApi, routeWeb } from "../services/pathRoutes";
 
 
 type AuthContextData = {
@@ -32,7 +32,7 @@ export const AuthContext = createContext({} as AuthContextData)
 export function signOut() {
     try {
         destroyCookie(undefined, properties.cookieToken);
-        window.location.href = routesWeb.signIn;
+        window.location.href = routeWeb.signIn;
     } catch (error) {
         console.log("ERRO DESLOGAR")
     }
@@ -44,7 +44,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     async function signIn(data: SignInProps) {
         try {
-            const response = await api.post(routesApi.signIn, data);
+            const response = await api.post(routeApi.signIn, data);
             const { user, token } = response.data;
 
             setCookie(undefined, properties.cookieToken, token, {
@@ -53,14 +53,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
             })
 
             setUser({
-                username: user.name,
+                username: user.username,
                 id: user.id,
                 name: user.name
             })
 
             api.defaults.headers["Authorization"] = `Bearer ${token}`
 
-            window.location.href = routesWeb.admin;
+            window.location.href = routeWeb.admin;
 
         } catch (error) {
             console.log(error)

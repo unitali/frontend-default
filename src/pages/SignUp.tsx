@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { Input } from '../components/input';
 import { Button } from '../components/button';
 import logotipo from "../assets/img/logotipo.png"
-import { routesApi, routesWeb } from '../services/routes';
+import { routeApi, routeWeb } from '../services/pathRoutes';
 
 
 const labels = {
@@ -58,7 +58,7 @@ export function SignUp() {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        const apiUrl = routesApi.signUp;
+        const apiUrl = routeApi.signUp;
 
         if (apiUrl) {
             setLoading(true);
@@ -100,10 +100,10 @@ export function SignUp() {
                 src={logotipo}
                 alt='logotipo' />
             <h2 className="fs-3 p-4"
-                id="tilte" >
+                id="title" >
                 {labels.title}
             </h2>
-            <form
+            {/* <form
                 onSubmit={handleSubmit}
                 id="form" >
                 <Input
@@ -155,7 +155,7 @@ export function SignUp() {
                         {labels.btnBack}
                     </Button>
                 </div>
-            </form>
+            </form> */}
         </div>
     );
 };
